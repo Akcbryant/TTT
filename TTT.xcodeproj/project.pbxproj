@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5A7D69F1BDF6AC900AFE3B6 /* TTTViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7D69E1BDF6AC900AFE3B6 /* TTTViewControllerTests.swift */; };
 		A5AF0AA51BCEB1DC0042CE83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF0AA41BCEB1DC0042CE83 /* AppDelegate.swift */; };
 		A5AF0AAA1BCEB1DC0042CE83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AF0AA81BCEB1DC0042CE83 /* Main.storyboard */; };
 		A5AF0AAC1BCEB1DC0042CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AF0AAB1BCEB1DC0042CE83 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5A7D69E1BDF6AC900AFE3B6 /* TTTViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTTViewControllerTests.swift; sourceTree = "<group>"; };
 		A5AF0AA11BCEB1DC0042CE83 /* TTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AF0AA41BCEB1DC0042CE83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AF0AA91BCEB1DC0042CE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AF0AB91BCEB1DC0042CE83 /* TTTTests.swift */,
+				A5A7D69E1BDF6AC900AFE3B6 /* TTTViewControllerTests.swift */,
 				A5AF0ABB1BCEB1DC0042CE83 /* Info.plist */,
 			);
 			path = TTTTests;
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5AF0ABA1BCEB1DC0042CE83 /* TTTTests.swift in Sources */,
+				A5A7D69F1BDF6AC900AFE3B6 /* TTTViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

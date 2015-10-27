@@ -113,40 +113,56 @@ class TTTTests: XCTestCase {
         XCTAssertEqual(ttt.getScore(testBoard), -1, "This is a loss for the computer")
     }
     
-    func testGetMaxScore() {
+    func testGetNextScore() {
         testBoard.configuration = [e,e,e,e,e,e,e,e,e]
-        XCTAssertEqual(TTT().getMaxScore(testBoard), 0, "It assumes it's opponent will play optimally.")
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p1), 0, "It always assumes it's opponent will play optimally.")
         
         testBoard.configuration = [p2,p2,e,
                                    p1,p2,p1,
                                    p1,p1,e]
-        XCTAssertEqual(TTT().getMaxScore(testBoard), 10)
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p1), 10)
         
         testBoard.configuration = [p1,p1,e,
                                    p1,p1,p2,
-                                    e,e,e]
-        XCTAssertEqual(TTT().getMaxScore(testBoard), -10)
-    }
-    
-    func testGetMinScore() {
-        testBoard.configuration = [e,e,e,e,e,e,e,e,e]
-        XCTAssertEqual(TTT().getMinScore(testBoard), 0)
+                                   e,e,e]
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p1), -10)
+        
+        testBoard.configuration = [e,e,e,  e,e,e,  e,e,e]
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p2), 0, "It always assumes it's opponent will play optimally.")
+        
+        testBoard.configuration = [p2,p2,e,
+                                   p1,p2,p1,
+                                   p1,p1,e]
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p2), -10)
+        
+        testBoard.configuration = [p1,p1,e,
+                                   p1,p1,p2,
+                                   e,e,e]
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p2), -10)
         
         testBoard.configuration = [p1,p1,e,
                                    p2,e,p2,
                                    p1,e,p1]
-        XCTAssertEqual(TTT().getMinScore(testBoard), -10, "The enemy's sure victory means -10 for me.")
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer:  p2), -10)
         
         testBoard.configuration = [p2,p1,e,
                                    p2,p2,e,
-                                    e,p2,p1]
-        XCTAssertEqual(TTT().getMinScore(testBoard), 10, "The enemy's loss means +10 for me")
+                                   e,p2,p1]
+        XCTAssertEqual(TTT().getNextScore(testBoard, currentPlayer: p2), 10)
+
     }
     
     func testGetNextMove() {
         testBoard.configuration = [e,e,e,e,e,e,e,e,e]
         
         XCTAssertEqual(TTT().getNextMove(testBoard), 0, "First move is easy")
+        
+        testBoard.configuration = [p1,e,e,
+                                   e,e,e,
+                                   e,e,e]
+        
+        XCTAssertEqual(TTT().getNextMove(testBoard), 4, "First move is easy")
+        
         
         //The computer doesn't always take advantage of suboptimal opponents. This would be the next spot for improving the AI.
 //        testBoard.configuration = [p2,p1,e,
