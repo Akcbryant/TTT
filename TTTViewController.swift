@@ -19,7 +19,7 @@ public class TTTViewController: UIViewController, TTTViewDelegate {
     var currentState = CurrentState.Begin {
         didSet {
             tttBoardView?.infoLabel.text = currentState.rawValue
-            processCurrentState()
+            checkCurrentState()
         }
     }
     
@@ -39,6 +39,16 @@ public class TTTViewController: UIViewController, TTTViewDelegate {
     func gridPressed(position: Int, sender: UIButton) {
         if currentBoard.configuration[position] == Player.Empty {
             processMove(position, player: tttEngine.human, board: currentBoard)
+        }
+    }
+    
+    /**
+     Serves to read current state of the board and get the appropriate next step/move.
+     */
+    func checkCurrentState() {
+        if currentState == .ComputerTurn {
+            let nextMove = tttEngine.getNextMove(currentBoard)
+            processMove(nextMove, player: tttEngine.computer, board: currentBoard)
         }
     }
     
@@ -66,27 +76,6 @@ public class TTTViewController: UIViewController, TTTViewDelegate {
             } else {
                 currentState = .HumanTurn
             }
-        }
-    }
-    
-    /**
-     Serves to read current state of the board and get the appropriate next step/move.
-    */
-    func processCurrentState() {
-        
-        switch (currentState) {
-        case .ComputerTurn:
-            let nextMove = tttEngine.getNextMove(currentBoard)
-            processMove(nextMove, player: tttEngine.computer, board: currentBoard)
-            break
-        case .Draw:
-            
-            break
-        case .ComputerWin:
-            
-            break
-        default:
-            break
         }
     }
     
