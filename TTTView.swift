@@ -20,7 +20,6 @@ class TTTView: UIView {
     var buttons = [UIButton]()
     var xButton = UIButton()
     var oButton = UIButton()
-    
     var delegate: TTTViewDelegate?
 
     override init(frame: CGRect) {
