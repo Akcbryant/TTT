@@ -9,7 +9,7 @@ The following three files were created with an MVC architecture in mind. The fol
 
 `TTTView.Swift` - Takes care of creating and laying out the buttons and delegates the button presses to a TTTViewDelegate.
 
-`TTTViewController.Swift` - Coordinates the interaction between the other two classes.
+`TTTViewController.Swift` - As a TTTViewDelegate, updates the TTT model and coordinates between the other two classes. This includes a state machine that keeps track of the current state of the game board and makes decisions about updating the model and the view accordingly.
 
 # Build Steps
 
@@ -18,4 +18,12 @@ The following three files were created with an MVC architecture in mind. The fol
 Use TTT.xcodeproj to launch the project and run the application in the simulator.  
 
 Built with Xcode 7.1 and requires Swift 2.x
+
+NOTE: Xcode 7.0 and higher has Swift 2.x
+
+# Testing
+
+One can find tests in the folder TTTTests and they are ready to run using the Xcode test feature.
+
+Testing covers TTT.swift and TTTViewController.swift
 
