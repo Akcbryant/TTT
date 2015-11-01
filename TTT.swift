@@ -96,6 +96,23 @@ class TTT: NSObject {
         return 0
     }
     
+    /** 
+     Loops through each available move for the current player and makes available the index of that move as well as the score for that move.
+     
+     - parameter board: The current board to loop through.
+     - parameter currentPlayer: The player who will be used to loop through next possible moves.
+     - parameter function: A function that takes the current index of the move being made and the corresponding score of this move.
+    */
+    func boardScoreLoop(board: Board, currentPlayer: Player, function: (index: Int, nextScore: Int) -> Void) {
+        for i in 0..<board.configuration.count {
+            if board.configuration[i] == .Empty {
+                let newBoard = makeMove(i, player: currentPlayer, board: board)
+                let nextScore = getNextScore(newBoard, currentPlayer: currentPlayer)
+                function(index: i, nextScore: nextScore)
+            }
+        }
+    }
+    
     /**
      Finds the next move for the computer player.
      
@@ -115,14 +132,11 @@ class TTT: NSObject {
         
         var bestScore = -100
         var bestMove = 0
-        for var i = 0; i < board.configuration.count; i++ {
-            if board.configuration[i] == .Empty {
-                let newBoard = makeMove(i, player: computer, board: board)
-                let nextScore = getNextScore(newBoard, currentPlayer: computer)
-                if nextScore > bestScore {
-                    bestScore = nextScore
-                    bestMove = i
-                }
+        
+        boardScoreLoop(board, currentPlayer: computer) { (i, nextScore) -> Void in
+            if nextScore > bestScore {
+                bestScore = nextScore
+                bestMove = i
             }
         }
         
@@ -150,19 +164,14 @@ class TTT: NSObject {
         let nextPlayer = otherPlayer(currentPlayer)
         var bestScore = setBestScore(currentPlayer)
     
-        for var i = 0; i < board.configuration.count; i++ {
-            if board.configuration[i] == .Empty {
-                let newBoard = makeMove(i, player: nextPlayer, board: board)
-                let nextScore = getNextScore(newBoard, currentPlayer: nextPlayer)
-                
-                if nextPlayer == computer {
-                    if nextScore > bestScore {
-                        bestScore = nextScore
-                    }
-                } else {
-                    if nextScore < bestScore {
-                        bestScore = nextScore
-                    }
+        boardScoreLoop(board, currentPlayer: nextPlayer) { (i, nextScore) -> Void in
+            if nextPlayer == self.computer {
+                if nextScore > bestScore {
+                    bestScore = nextScore
+                }
+            } else {
+                if nextScore < bestScore {
+                    bestScore = nextScore
                 }
             }
         }
