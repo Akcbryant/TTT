@@ -114,21 +114,16 @@ class TTT: NSObject {
     }
     
     /**
-     Finds the next move for the computer player.
+     Finds the next move for the computer player. Utilizes the minimax algorithm.
      
      - parameter board: Board to find next move.
      
      - returns: position of next move
     */
     func getNextMove(board: Board) -> Int {
-        // If not an end game situation recursively alternate between get best move and get worst move.
-        
-        // If the game is already over return the same board.
         if isFinished(board) {
             return 0
         }
-        
-        // Otherwise we need to look at each game state and alternate min max so we simulate an optimal player.
         
         var bestScore = -100
         var bestMove = 0

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/xcode,osx
 
 ### Xcode ###
@@ -52,3 +53,16 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+=======
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*~
+*.tmp*
+*.orig
+*.cache
+*.log
+
+_site/
+>>>>>>> 675cb618fb6221d278b4b7b746cead784961ede3
