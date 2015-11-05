@@ -90,7 +90,13 @@ public class TTTViewController: UIViewController, TTTViewDelegate {
         resetBoard()
         tttEngine.human = .Player2
         tttEngine.computer = .Player1
-        currentState = .ComputerTurn
+        computerFirstMove()
+    }
+    
+    func computerFirstMove() {
+        currentState = .HumanTurn
+        currentBoard = tttEngine.makeMove(0, player: tttEngine.computer, board: currentBoard)
+        tttBoardView?.renderMove(0, player: tttEngine.computer)
     }
 
     func resetBoard() {
